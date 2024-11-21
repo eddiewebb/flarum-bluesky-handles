@@ -12,8 +12,9 @@
 namespace Webbinaro\BlueskyHandles;
 
 use Flarum\Extend;
+use Webbinaro\BlueskyHandles\BlueskyController;
 
 return [
     (new Extend\Routes('api'))
-        ->get('/bluesky/{slug}', 'bluesky.did', Routes\BlueskyController::class),
+        ->get('/bluesky/{slug}', 'bluesky.did', BlueskyController::class),
 ];
