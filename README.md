@@ -77,5 +77,5 @@ server {
 ## Links
 
 - [Packagist](https://packagist.org/packages/webbinaro/flarum-bluesky-handles)
-- [GitHub](https://github.com/webbinaro/flarum-bluesky-handles)
-- [Discuss](https://discuss.flarum.org/d/PUT_DISCUSS_SLUG_HERE)
+- [GitHub](https://github.com/eddiewebb/flarum-bluesky-handles)
+- [Discuss](https://discuss.flarum.org/d/36418-custom-bluesky-handles-for-domain-users)
