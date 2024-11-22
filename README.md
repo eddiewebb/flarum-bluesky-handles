@@ -20,6 +20,25 @@ php flarum migrate
 php flarum cache:clear
 ```
 
+## Requires FOF/Masquerade
+
+This extension depends on a custom bio field provided by FOF/Masquerade. Setting details below.
+
+1. Create a new field, type `Advanced`
+2. Set name as `Bluesky DID` or similar
+3. Set validation rule as `regex:/^did:[a-z]+:[a-zA-Z0-9._:%-]*[a-zA-Z0-9._-]$/`
+4. Set icon to `fas-brands fa-bluesky`
+
+![Example Masquerade Settings](/assets/masqfieldsetup.png)
+
+### User entry
+
+Users can find their DID on their Bluesky Profile > Settings > Handle > Custom Handle
+
+Users can enter it on Flarum > Profile > Edit Profile
+
+![Example user entry](/assets/userentry.png)
+
 ## Links
 
 - [Packagist](https://packagist.org/packages/webbinaro/flarum-bluesky-handles)
