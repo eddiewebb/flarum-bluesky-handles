@@ -4,6 +4,7 @@ namespace Webbinaro\BlueskyHandles\Controllers;
 
 use Flarum\Api\AbstractSerializeController;
 use Flarum\Api\Controller\AbstractShowController;
+use Flarum\Api\Serializer\BasicUserSerializer;
 use Flarum\User\UserRepository;
 use Flarum\Api\Serializer\UserSerializer;
 use Psr\Http\Message\ServerRequestInterface;
@@ -22,7 +23,7 @@ class BlueskyController extends AbstractShowController
        $this->users = $users;
    }
     //Todo: our own
-    public $serializer = UserSerializer::class;
+    public $serializer = BasicUserSerializer::class;
     
     protected function data(ServerRequestInterface $request, Document $document)
     {
