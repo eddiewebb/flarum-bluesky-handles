@@ -1,6 +1,6 @@
 <?php
 
-namespace Webbinaro\BlueskyHandles;
+namespace Webbinaro\BlueskyHandles\Controllers;
 
 use Flarum\Api\AbstractSerializeController;
 use Flarum\Api\Controller\AbstractShowController;

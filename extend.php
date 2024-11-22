@@ -12,7 +12,7 @@
 namespace Webbinaro\BlueskyHandles;
 
 use Flarum\Extend;
-use Webbinaro\BlueskyHandles\BlueskyController;
+use Webbinaro\BlueskyHandles\Controllers\BlueskyController;
 
 return [
     (new Extend\Routes('api'))
