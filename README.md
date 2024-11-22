@@ -63,7 +63,7 @@ server {
     listen 443 ssl http2;
     listen [::]:443 ssl http2;
     # listen for any subdomains EXCEPT gear.
-    server_name ~^(?<slug>(?!gear)\w+)\.example\.com$;
+    server_name ~^(?<slug>(?!other-suddomain-to-exclude)\w+)\.example\.com$;
     return 301 $scheme://example.com/api/bluesky/$slug;
 
     # Requires SSL, so make sure you have a wildcard enabled cert
