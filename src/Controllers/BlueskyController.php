@@ -12,6 +12,7 @@ use Tobscure\JsonApi\Document;
 use Illuminate\Support\Arr;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Server\RequestHandlerInterface;
+use Laminas\Diactoros\Response\HtmlResponse;
 
 class BlueskyController implements RequestHandlerInterface
 {    
@@ -31,6 +32,7 @@ class BlueskyController implements RequestHandlerInterface
     {
         $slug = Arr::get($request->getQueryParams(), 'slug');
         $user = $this->users->findOrFailByUsername($slug);
+        return  new HtmlResponse(print_r($user));
         foreach ($user->included as $included) {
             if($included->type === 'masquerade-answer'
             && str_starts_with($included->attributes->content,"did:")) {
