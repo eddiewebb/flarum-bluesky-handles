@@ -17,8 +17,4 @@ use Webbinaro\BlueskyHandles\Controllers\BlueskyController;
 return [
     (new Extend\Routes('api'))
         ->get('/bluesky/{slug}', 'bluesky.did', BlueskyController::class),
-
-        (new Extend\ApiController(BlueskyController::class))
-        ->addInclude('bioFields.field')
-        ->addInclude('masqueradeAnswers'),
 ];
