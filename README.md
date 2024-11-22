@@ -4,6 +4,8 @@
 
 A [Flarum](http://flarum.org) extension. Enables your Flarum users to set their Bluesky handles to use a sub-domain of your site.  I.e. @username.example.com vs the default bluesky domain. 
 
+![Bluesky user settings with verified custom domain](/assets/blueskysettings.png)
+
 ## Installation
 
 Install with composer:
@@ -38,6 +40,39 @@ Users can find their DID on their Bluesky Profile > Settings > Handle > Custom H
 Users can enter it on Flarum > Profile > Edit Profile
 
 ![Example user entry](/assets/userentry.png)
+
+## Wildcard Domain Support - Handle requirements
+
+Bluesky will try to resolve subdomains matching requested user handles.
+
+I.e.  @eddie.adkadv.com will attempt to resolve https://eddie.adkadv.com
+
+This means you will need to configure your webserver (nginx, apache) to convert these into requests on a specific API endpoint `/api/bluesky/<subdomain>`
+
+1. Add wildcard to your DNS Settings as a new A and AAAA record
+2. Update your webserver to route all subdomains to documented API.
+3. Update your SSL Certificates to handle wildcard domains.
+
+
+### Nginx Example
+
+You can add a new server block to nginx to listen to wildcard domains, excluding known ones.
+
+```
+server {
+    listen 443 ssl http2;
+    listen [::]:443 ssl http2;
+    # listen for any subdomains EXCEPT gear.
+    server_name ~^(?<slug>(?!gear)\w+)\.example\.com$;
+    return 301 $scheme://example.com/api/bluesky/$slug;
+
+    # Requires SSL, so make sure you have a wildcard enabled cert
+    # This DNS validation
+    ssl_certificate /etc/letsencrypt/live/example.com/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/example.com/privkey.pem;
+}
+
+```
 
 ## Links
 
