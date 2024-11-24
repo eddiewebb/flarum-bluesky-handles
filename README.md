@@ -1,6 +1,6 @@
 # BlueSky Custom Handles
 
-![License](https://img.shields.io/badge/license-GPL-1.0-or-later-blue.svg) [![Latest Stable Version](https://img.shields.io/packagist/v/webbinaro/flarum-bluesky-handles.svg)](https://packagist.org/packages/webbinaro/flarum-bluesky-handles) [![Total Downloads](https://img.shields.io/packagist/dt/webbinaro/flarum-bluesky-handles.svg)](https://packagist.org/packages/webbinaro/flarum-bluesky-handles)
+[![Latest Stable Version](https://img.shields.io/packagist/v/webbinaro/flarum-bluesky-handles.svg)](https://packagist.org/packages/webbinaro/flarum-bluesky-handles) [![Total Downloads](https://img.shields.io/packagist/dt/webbinaro/flarum-bluesky-handles.svg)](https://packagist.org/packages/webbinaro/flarum-bluesky-handles)
 
 A [Flarum](http://flarum.org) extension. Enables your Flarum users to set their Bluesky handles to use a sub-domain of your site.  I.e. @username.example.com vs the default bluesky domain. 
 
@@ -64,7 +64,15 @@ server {
     listen [::]:443 ssl http2;
     # listen for any subdomains EXCEPT gear.
     server_name ~^(?<slug>(?!other-suddomain-to-exclude)\w+)\.example\.com$;
-    return 301 $scheme://example.com/api/bluesky/$slug;
+
+    if ( $request_uri ~ ^/.well-known/atproto-did ) {
+        # send atproto did verification requests to custom endpoint
+        return $scheme://example.com/api/bluesky/$slug;
+    }
+    # send all other requests to subpath of user profile
+    return $scheme://example.com/u/$slug$request_uri;
+    
+    
 
     # Requires SSL, so make sure you have a wildcard enabled cert
     # This DNS validation
