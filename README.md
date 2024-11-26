@@ -4,7 +4,7 @@
 
 A [Flarum](http://flarum.org) extension. Enables your Flarum users to set their Bluesky handles to use a sub-domain of your site.  I.e. @username.example.com vs the default bluesky domain. 
 
-![Bluesky user settings with verified custom domain](/assets/blueskysettings.png)
+![Bluesky user settings with verified custom domain](https://github.com/eddiewebb/flarum-bluesky-handles/blob/main/assets/blueskysettings.png)
 
 ## Installation
 
@@ -31,7 +31,7 @@ This extension depends on a custom bio field provided by FOF/Masquerade. Setting
 3. Set validation rule as `regex:/^did:[a-z]+:[a-zA-Z0-9._:%-]*[a-zA-Z0-9._-]$/`
 4. Set icon to `fas-brands fa-bluesky`
 
-![Example Masquerade Settings](/assets/masqfieldsetup.png)
+![Example Masquerade Settings](https://github.com/eddiewebb/flarum-bluesky-handles/blob/main/assets/masqfieldsetup.png)
 
 ### User entry
 
@@ -39,7 +39,7 @@ Users can find their DID on their Bluesky Profile > Settings > Handle > Custom H
 
 Users can enter it on Flarum > Profile > Edit Profile
 
-![Example user entry](/assets/userentry.png)
+![Example user entry](https://github.com/eddiewebb/flarum-bluesky-handles/blob/main/assets/userentry.png)
 
 ## Wildcard Domain Support - Handle requirements
 
